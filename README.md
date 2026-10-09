@@ -15,20 +15,26 @@
 
 ### A. 直接下载成品（最快）
 
-Release 里提供 `哔哩哔哩_9.5.0_已修复.apk`（已 zipalign、已用 debug key 做 v1+v2+v3 签名）。
+Release `v9.5.0-fixed` 提供成品：[bilibili_9.5.0_fixed.apk](https://github.com/xyf6696416/bili-9.5.0-crash-fix/releases/download/v9.5.0-fixed/bilibili_9.5.0_fixed.apk)（201.6 MB / 211437006 字节，已 zipalign、已用 debug key 做 v2+v3 签名）
+
+```
+SHA-256  08000111eb3d0c2c0dd263fa12d2cbb8e4ed8b66560629adea96d68f2f9ff87f
+```
+
+发布页：<https://github.com/xyf6696416/bili-9.5.0-crash-fix/releases/tag/v9.5.0-fixed>
 
 ```bash
 # 卸载旧版（签名不同必须先卸载，否则 INSTALL_FAILED_UPDATE_INCOMPATIBLE）
 adb -s <serial> uninstall tv.danmaku.bili
 
 # 安装（Android 16 的 pm 已不支持 -s 选项；--no-streaming 可跳过部分厂商的安装确认弹窗）
-adb -s <serial> install -r -t --no-streaming "哔哩哔哩_9.5.0_已修复.apk"
+adb -s <serial> install -r -t --no-streaming "bilibili_9.5.0_fixed.apk"
 ```
 
 如果 `adb install` 报 `remote couldn't create file: Is a directory`（部分 adb/厂商组合下的已知问题），改用推送 + 本地安装：
 
 ```bash
-adb -s <serial> push "哔哩哔哩_9.5.0_已修复.apk" /data/local/tmp/bili_fix.apk
+adb -s <serial> push "bilibili_9.5.0_fixed.apk" /data/local/tmp/bili_fix.apk
 adb -s <serial> shell pm install -r -t /data/local/tmp/bili_fix.apk
 ```
 
@@ -45,6 +51,8 @@ ANDROID_BUILD_TOOLS=/opt/android-sdk/build-tools/33.0.2 ./build/build.sh /path/t
 ```
 
 流程：`patch_libbili.py` 定位并打补丁 → `zipalign -p 4` → `apksigner sign`（v1/v2/v3，没有 keystore 时自动用 `keytool` 生成一个 debug keystore）。
+
+自己编译出来的包 SHA-256 与 Release 里的成品不同是正常的：Release 成品用的是分析过程中那份 debug keystore，你自己构建时会新生成一份密钥，签名块不同。里面的 `lib/arm64-v8a/libbili.so` 与 Release 成品逐字节一致（可用 `python scripts/patch_libbili.py --verify` 或 `unzip -p 包 lib/arm64-v8a/libbili.so | sha256sum` 对照）。
 
 ---
 
