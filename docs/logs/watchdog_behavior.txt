@@ -1,0 +1,35 @@
+﻿Spawning `tv.danmaku.bili`...
+Spawned `tv.danmaku.bili`. Resuming main thread!
+[Remote::tv.danmaku.bili ]-> [+] libbili.so base=0x73c1923000
+[libbili:sysprop] ro.build.version.release
+[libbili:fopen] /system/bin/su mode=r
+[libbili:fopen] /system/xbin/su mode=r
+[libbili:fopen] /su/bin/su mode=r
+[libbili:fopen] /sbin/su mode=r
+[libbili:fopen] /data/local/xbin/su mode=r
+[libbili:fopen] /system/sd/xbin/su mode=r
+[libbili:fopen] /data/local/su mode=r
+[libbili:fopen] /system/bin/failsafe/su mode=r
+[libbili:sysprop] ro.serialno
+[libbili:pthread_create] start_routine=0x73bb0c6df0
+[libbili:fopen] /proc/30064/status mode=r
+[libbili:fopen] /proc/net/tcp mode=r
+[libbili:fopen] /proc/30064/maps mode=r
+[libbili:getaddrinfo] host=api.bilibili.com service=80
+[libbili:socket] domain=0xa type=0x1 proto=0x0
+[libbili:connect] fd=0x18e sa=
+��P����$�V����������(��������
+[libbili:send] err
+[libbili:recv] fd=0x18e len=0x800
+[libbili:fopen] /proc/30064/status mode=r
+[libbili:fopen] /proc/net/tcp mode=r
+[libbili:fopen] /proc/30064/maps mode=r
+===== EXIT CALL @libbili+0x8f1c =====
+0x73c192bf18 libbili.so!0x8f18
+0x73c193023c libbili.so!0xd23c
+0x73c192bda0 libbili.so!0x8da0
+0x765feae230 libc.so!_ZL15__pthread_startPv+0xbc
+0x765fea0a4c libc.so!__start_thread+0x48
+Process terminated
+
+Thank you for using Frida!

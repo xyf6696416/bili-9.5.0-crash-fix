@@ -1,0 +1,40 @@
+MIT License
+
+Copyright (c) 2025 xyf6696416
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), which in
+this repository consist solely of analysis scripts, patching tools, Frida hook
+scripts, build scripts, logs and documentation, to deal in the Software without
+restriction, including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+SCOPE NOTE / 范围声明
+
+This license applies ONLY to the tooling in this repository (scripts/, build/,
+frida/, tools/, docs/ and the written reports). It does NOT apply to, and this
+repository grants NO rights over, any third-party application package
+(tv.danmaku.bili / bilibili), its binaries, its resources, or any modified build
+derived from them. Any APK made available through GitHub Releases is provided for
+convenience to people who already lawfully possess the same unmodified version of
+that application, for use on devices they own or are authorized to test.
+Remove the Release asset if you are not certain you may lawfully keep it.
+
+本许可证仅适用于本仓库中的工具（scripts/、build/、frida/、tools/、docs/ 及报告）。
+它不适用于、也不授予任何关于第三方应用包（tv.danmaku.bili / 哔哩哔哩）及其二进制、资源，
+或由其派生的任何修改版本的再分发权利。通过 GitHub Release 提供的 APK 仅面向
+已经合法持有同一版本原始安装包、并在自有或获授权设备上使用的人。
+若无法确认可以合法保留，请删除该 Release 附件。

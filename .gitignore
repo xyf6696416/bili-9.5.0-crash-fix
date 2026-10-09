@@ -1,0 +1,33 @@
+# 反编译产物（体积巨大，不入库）
+apktool/
+jadx/
+decode/
+
+# 构建中间产物
+*.unsigned.apk
+*_aligned.apk
+*.idsig
+_t*.apk
+_t*.so
+_orig_libbili.so
+out/
+
+# Python
+__pycache__/
+*.pyc
+
+# 本地密钥与凭据（切勿提交）
+*.keystore
+*.jks
+*.p12
+.gh_token
+*.token
+
+# 日志与抓包
+*.log
+*.network-response
+*.har
+
+# 系统
+Thumbs.db
+.DS_Store
