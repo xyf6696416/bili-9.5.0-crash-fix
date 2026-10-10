@@ -1,0 +1,93 @@
+{
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "+8%",
+  "segments": [
+    {
+      "id": "s01_open",
+      "kind": "card",
+      "card": "open",
+      "text": "这是一支去广告版 B 站 9.5.0 的实机演示。开屏广告、首页信息流广告、播放页广告、暂停广告，四类全部拿掉。下面在 Android 15 模拟器上跑一遍。",
+      "sub": "这是一支去广告版 B 站 9.5.0 的实机演示。开屏广告、首页信息流广告、播放页广告、暂停广告，四类全部拿掉。下面在 Android 15 模拟器上跑一遍。"
+    },
+    {
+      "id": "s02_bg",
+      "kind": "card",
+      "card": "bg",
+      "text": "样本是 9.5.0 版，版本号 9050300，一共 30 个 dex。这个包本身并没有任何去广告代码，之前闪退来自 libbili.so 里的一个 native 看门狗。先在 0xa71c 和 0x8f1c 两处打等长补丁把它修好，才有后面这些改动。",
+      "sub": "样本是 9.5.0 版，versionCode 9050300，一共 30 个 dex。这个包本身并没有任何去广告代码，之前闪退来自 libbili.so 里的一个 native 看门狗。先在 0xa71c 和 0x8f1c 两处打等长补丁把它修好，才有后面这些改动。"
+    },
+    {
+      "id": "s03_cold",
+      "kind": "video",
+      "src": "seg1.mp4",
+      "start": 0.0,
+      "end": 10.0,
+      "text": "冷启动。以前这里是一整屏开屏广告，现在直接进首页推荐。",
+      "sub": "冷启动。以前这里是一整屏开屏广告，现在直接进首页推荐。"
+    },
+    {
+      "id": "s04_feed",
+      "kind": "video",
+      "src": "seg1.mp4",
+      "start": 10.0,
+      "end": 20.0,
+      "text": "推荐信息流。广告卡片在 Pegasus 解析器里就被丢掉了，日志里能看到 ADROP 拦下 large cover v9 和 small cover v2 这几类广告卡。",
+      "sub": "推荐信息流。广告卡片在 Pegasus 解析器里就被丢掉了，日志里能看到 ADROP 拦下 large_cover_v9 和 small_cover_v2 这几类广告卡。"
+    },
+    {
+      "id": "s05_detail",
+      "kind": "video",
+      "src": "seg2.mp4",
+      "start": 0.0,
+      "end": 12.0,
+      "text": "进播放页。播放页广告接口 x v 2 view ad 被直接拦掉，视频正常播，弹幕也在。",
+      "sub": "进播放页。播放页广告接口 /x/v2/view/ad/ 被直接拦掉，视频正常播，弹幕也在。"
+    },
+    {
+      "id": "s06_related",
+      "kind": "video",
+      "src": "seg2.mp4",
+      "start": 12.0,
+      "end": 24.0,
+      "text": "往下滑相关推荐，整列全是正常视频卡片，没有插进来的推广位。",
+      "sub": "往下滑相关推荐，整列全是正常视频卡片，没有插进来的推广位。"
+    },
+    {
+      "id": "s07_story",
+      "kind": "video",
+      "src": "seg3.mp4",
+      "start": 0.0,
+      "end": 16.0,
+      "text": "竖屏 story 视频也一样干净，没有插卡广告。",
+      "sub": "竖屏 story 视频也一样干净，没有插卡广告。"
+    },
+    {
+      "id": "s08_paused",
+      "kind": "card",
+      "card": "paused",
+      "text": "暂停广告这条链路最隐蔽。整个播放器所有广告面板只过一个总闸，AdPanelRepository 的 showPanel。我们把它和它的回调实现都改成直接返回，再把 DDConfig 的 getPausePageEnable 写死成 false，暂停页流程第一步就退出。",
+      "sub": "暂停广告这条链路最隐蔽。整个播放器所有广告面板只过一个总闸：AdPanelRepository.showPanel()。我们把它和它的回调实现都改成直接返回，再把 DDConfig.getPausePageEnable() 写死成 false，暂停页流程第一步就退出。"
+    },
+    {
+      "id": "s09_splash",
+      "kind": "card",
+      "card": "splash",
+      "text": "开屏这边，冷启动广告是在 MainActivity 里由 ColdSplashWrapper 挂上去的，我们让它直接返回 false。热启动的 HotSplashActivity 在 onCreate 里立刻 finish。",
+      "sub": "开屏这边，冷启动广告是在 MainActivity 里由 ColdSplashWrapper.a() 挂上去的，我们让它直接返回 false。热启动的 HotSplashActivity 在 onCreate 里立刻 finish()。"
+    },
+    {
+      "id": "s10_log",
+      "kind": "card",
+      "card": "log",
+      "text": "整轮测试的拦截统计：BLOCK 一百二十五次，ADROP 四次，四个开屏接口 splash show、list、brand list、event list2 全部被拦。",
+      "sub": "整轮测试的拦截统计：BLOCK 125 次，ADROP 4 次，四个开屏接口 /x/v2/splash/show、list、brand/list、event/list2 全部被拦。"
+    },
+    {
+      "id": "s11_ship",
+      "kind": "card",
+      "card": "ship",
+      "text": "安装包和补丁脚本都在 GitHub 仓库，最新版本 v9.5.0 adblock beta2，220 MB，支持源码编译，也支持直接下载。",
+      "sub": "安装包和补丁脚本都在 GitHub 仓库，最新版本 v9.5.0-adblock-beta2，220 MB，支持源码编译，也支持直接下载。"
+    }
+  ]
+}
