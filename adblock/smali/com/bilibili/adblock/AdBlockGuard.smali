@@ -140,7 +140,7 @@
     return-void
 .end method
 
-.method private static append(Ljava/lang/String;)V
+.method public static append(Ljava/lang/String;)V
     .locals 3
 
     :try_start_a
